@@ -1,0 +1,35 @@
+font=MesloLGS Nerd Font Mono 14
+margin=20
+default-timeout=5000
+border-size=1
+border-radius=4
+anchor=top-right
+layer=overlay
+width=250
+
+
+# Mako Configuration - Dracula Darker Theme
+background-color=#12121d
+border-color=#282a36
+border-size=2
+padding=10
+default-timeout=5000
+text-color=#f8f8f2
+width=300
+height=100
+margin=10
+border-radius=6
+
+progress-color=#50fa7b
+
+# Critical Notifications
+[urgency=critical]
+background-color=#ff5555
+border-color=#ff6e6e
+text-color=#f8f8f2
+
+# Low Priority Notifications
+[urgency=low]
+background-color=#282a36
+border-color=#44475a
+text-color=#6272a4

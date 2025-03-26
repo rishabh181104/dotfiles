@@ -1,0 +1,56 @@
+general {
+	colors = true
+		interval = 1
+		output_format = "i3bar"
+		color_good = "#50FA7B"
+		color_degraded = "#F1FA8C"
+		color_bad = "#FF5555"
+
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "disk /"
+order += "load"
+order += "memory"
+order += "cpu_temperature 0"
+order += "tztime local"
+
+wireless _first_ {
+	format_up = "🟣 W: (%quality at %essid) "
+		format_down = "⚫ W: down "
+}
+
+ethernet _first_ {
+	format_up = "🔴 E: (%speed) "
+		format_down = "⚫ E: down "
+}
+
+battery all {
+	format = "🟢 %status %percentage %remaining "
+}
+
+disk "/" {
+	format = "🔵 %avail "
+}
+
+load {
+	format = "🟡 %1min "
+}
+
+memory {
+	format = "🟠 %used|%available "
+		threshold_degraded = "1G"
+		format_degraded = "MEMORY < %available"
+}
+
+cpu_temperature 0 {
+	format = "💡 %degrees% "
+		path = "/sys/class/backlight/intel_backlight/brightness"
+		max_threshold = 100
+}
+
+tztime local {
+	format = "🟣 %Y-%m-%d %H:%M:%S "
+}
