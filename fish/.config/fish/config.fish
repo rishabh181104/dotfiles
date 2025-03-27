@@ -114,7 +114,7 @@ alias f="find . | grep "
 alias checkcommand="type -t"
 alias openports='netstat -nape --inet'
 alias rebootsafe='sudo shutdown -r now'
-alias shutdown='sudo shutdown -r -n now'
+alias shutdown='sudo shutdown now'
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
