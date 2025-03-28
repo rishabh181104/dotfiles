@@ -35,6 +35,7 @@ PACKAGES=(
 	grim
 	slurp
 	thunar
+	ripgrep
 	xdg-desktop-portal-wlr
 	xdg-desktop-portal-hyprland
 	xdg-desktop-portal
