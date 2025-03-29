@@ -57,7 +57,7 @@ alias restart-dm='sudo systemctl restart display-manager'
 alias smv='sudo mv'
 alias scp='sudo cp'
 
-alias anime='/home/ste/ste-dotfiles/./ani-cli'
+alias anime='/home/ste/dotfiles/./ani-cli'
 
 alias web='cd /var/www/html'
 alias ebrc='edit ~/.bashrc'
