@@ -14,6 +14,7 @@ PACKAGES=(
 	wlogout
 	dunst
 	swaybg
+	mpvpaper
 	alacritty
 	hyprcursor
 	noto-fonts
