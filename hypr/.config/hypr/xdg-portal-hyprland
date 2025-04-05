@@ -1,8 +1,18 @@
 #!/bin/bash
+
+# Wait briefly to ensure system is ready
 sleep 1
-killall xdg-desktop-portal-hyprland
-killall xdg-desktop-portal-wlr
-killall xdg-desktop-portal
-/usr/libexec/xdg-desktop-portal-hyprland &
+
+# Terminate any running instances
+killall xdg-desktop-portal-hyprland || echo "Failed to stop xdg-desktop-portal-hyprland"
+killall xdg-desktop-portal-wlr || echo "Failed to stop xdg-desktop-portal-wlr"
+killall xdg-desktop-portal || echo "Failed to stop xdg-desktop-portal"
+
+# Start services with consistent paths
+/usr/libexec/xdg-desktop-portal-hyprland & || echo "Failed to start xdg-desktop-portal-hyprland"
 sleep 2
-/usr/lib/xdg-desktop-portal &
+/usr/lib/xdg-desktop-portal & || echo "Failed to start xdg-desktop-portal"
+
+# Optional: Log script execution
+echo "$(date) - Script executed" >> /path/to/logfile.log
+
