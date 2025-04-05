@@ -26,7 +26,7 @@ set $filemanager thunar
 set $editor cursor.AppImage
 set $music spotify
 set $communication wasistlos
-set $creativity obsidian.AppImage
+set $creativity Obsidian.AppImage
 set $ide jetbrains-toolbox
 
 new_window pixel 4
