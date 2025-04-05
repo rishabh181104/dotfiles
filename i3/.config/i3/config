@@ -8,6 +8,7 @@ exec --no-startup-id xss-lock -- i3lock --color=000000 --ignore-empty-password -
 exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
+exec --no-startup-id easyeffects
 exec --no-startup-id blueman-applet
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xset s off
