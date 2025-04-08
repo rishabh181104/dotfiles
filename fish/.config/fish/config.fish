@@ -51,13 +51,13 @@ alias nvi='nvim'
 alias v='nvim'
 alias duf='duf -hide special'
 alias mkdir='mkdir -p'
-alias zen='/home/ste/zen/./zen'
+alias zen='~/zen/./zen'
 alias fetch='fastfetch'
 alias restart-dm='sudo systemctl restart display-manager'
 alias smv='sudo mv'
 alias scp='sudo cp'
 
-alias anime='/home/ste/dotfiles/./ani-cli'
+alias anime='~/dotfiles/./ani-cli'
 
 alias web='cd /var/www/html'
 alias ebrc='edit ~/.bashrc'
@@ -166,5 +166,5 @@ export WINEFSYNC=1
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/home/ste/.opam/opam-init/init.fish' && source '/home/ste/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
