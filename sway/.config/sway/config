@@ -27,7 +27,7 @@ input "type:touchpad" {
 }
 
 # Random wallpaper
-exec --no-startup-id swaybg -i "$(find ~/Wallpapers/ -type f | shuf -n 1)" -m fill
+exec --no-startup-id swaybg -i "$(find ~/Wallpapers/Pictures/ -type f | shuf -n 1)" -m fill
 
 
 set $terminal kitty
@@ -74,7 +74,7 @@ bindsym $mod+k workspace next
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+q kill
-bindsym $mod+l exec swaylock -i /home/ste/Wallpapers/cat.jpg
+bindsym $mod+l exec swaylock -i /home/ste/Wallpapers/Pictures/sakura-tree-big-moon-4k-live_0001.jpg
 bindsym Print exec grim -g "$(slurp)" ~/Screenshot/-$(date +'%Y-%m-%d-%H%M%S').png
 bindsym $mod+b exec $browser
 bindsym $mod+Shift+b exec $browser1
@@ -85,7 +85,7 @@ bindsym $mod+c exec $communication
 bindsym $mod+o exec $creativity
 bindsym $mod+g exec github-desktop
 bindsym $mod+t exec $ide
-bindsym $mod+w exec swaybg -i "$(find ~/Wallpapers/ -type f | shuf -n 1)" -m fill
+bindsym $mod+w exec swaybg -i "$(find ~/Wallpapers/Pictures/ -type f | shuf -n 1)" -m fill
 
 # change focus
 bindsym Mod1+h focus left
@@ -198,9 +198,9 @@ client.urgent           #FF0000 #FF0000 #FF0000 #FF0000
 
 # Lock screen
 exec --no-startup-id swayidle \
-	     timeout 300 'swaylock -i /home/ste/Wallpapers/cat.jpg --color=000000 --ignore-empty-password --show-failed-attempts --indicator' \
+	     timeout 300 'swaylock -i /home/ste/Wallpapers/Pictures/sakura-tree-big-moon-4k-live_0001.jpg --color=000000 --ignore-empty-password --show-failed-attempts --indicator' \
 	     resume 'swaymsg "output * dpms on"' \
-	     before-sleep 'swaylock -i /home/ste/Wallpapers/cat.jpg --color=000000 --ignore-empty-password --show-failed-attempts --indicator'
+	     before-sleep 'swaylock -i /home/ste/Wallpapers/Pictures/sakura-tree-big-moon-4k-live_0001.jpg --color=000000 --ignore-empty-password --show-failed-attempts --indicator'
 
 	     bar {
 		     status_command i3status  # Or your chosen status tool
