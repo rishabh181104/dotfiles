@@ -9,13 +9,14 @@ logging.basicConfig(level=logging.DEBUG)
 
 mod = "mod4"
 alt = "mod1"
-terminal = "alacritty"
-browser = "google-chrome"
-code_editor = "/home/ste/./cursor.AppImage"
+terminal = "wezterm"
+browser = "~/./Min-1.35.0-beta.AppImage --enable-accelerated-video-decode --enable-accelerated-video-encode"
+browser1 = "google-chrome-stable --enable-accelerated-video-decode --enable-accelerated-video-encode"
+code_editor = "cursor.AppImage"
 github_desktop = "github-desktop"
 spotify = "spotify"
 discord = "discord"
-obsidian = "obsidian"
+obsidian = "obsidian.AppImage"
 
 
 @hook.subscribe.startup
@@ -57,6 +58,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
+    Key([mod, "shift"], "b", lazy.spawn(browser1), desc="Launch secondary browser"),
     Key([mod], "u", lazy.spawn(code_editor), desc="Launch editor"),
     Key([mod], "g", lazy.spawn(github_desktop), desc="Launch github_desktop"),
     Key([mod], "s", lazy.spawn(spotify), desc="Launch spotify"),
