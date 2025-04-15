@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 mod = "mod4"
 alt = "mod1"
 terminal = "wezterm"
-browser = "~/./Min-1.35.0-beta.AppImage --enable-accelerated-video-decode --enable-accelerated-video-encode"
+browser = "zen"
 browser1 = "google-chrome-stable --enable-accelerated-video-decode --enable-accelerated-video-encode"
 code_editor = "cursor.AppImage"
 github_desktop = "github-desktop"
@@ -22,7 +22,10 @@ obsidian = "obsidian.AppImage"
 @hook.subscribe.startup
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
-    subprocess.run([home])
+    if os.path.exists(home) and os.access(home, os.X_OK):
+        subprocess.run([home])
+    else:
+        logging.warning(f"Autostart script not found or not executable: {home}")
 
 
 keys = [
