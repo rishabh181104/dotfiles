@@ -1,69 +1,76 @@
-local map = vim.api.nvim_set_keymap
+local discipline = require("craftzdog.discipline")
+
+discipline.cowboy()
+
+local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- Do things without affecting the registers
+keymap.set("n", "x", '"_x')
+keymap.set("n", "<Leader>p", '"0p')
+keymap.set("n", "<Leader>P", '"0P')
+keymap.set("v", "<Leader>p", '"0p')
+keymap.set("n", "<Leader>c", '"_c')
+keymap.set("n", "<Leader>C", '"_C')
+keymap.set("v", "<Leader>c", '"_c')
+keymap.set("v", "<Leader>C", '"_C')
+keymap.set("n", "<Leader>d", '"_d')
+keymap.set("n", "<Leader>D", '"_D')
+keymap.set("v", "<Leader>d", '"_d')
+keymap.set("v", "<Leader>D", '"_D')
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Increment/decrement
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
 
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("v", "jk", "<Esc>")
+-- Delete a word backwards
+keymap.set("n", "dw", 'vb"_d')
 
-map("n", "<leader>w", ":w<CR>", opts)
-map("n", "<leader>q", ":q<CR>", opts)
-map("n", "<leader>h", ":nohlsearch<CR>", opts)
-map("n", "<leader>e", ":Neotree toggle<CR>", opts)
-map("n", "<leader>f", ":Telescope find_files<CR>", opts)
-map("n", "<leader>r", ":Telescope live_grep<CR>", opts)
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G")
 
-map("n", "<leader>sv", "<C-w>v", opts)
-map("n", "<leader>sh", "<C-w>s", opts)
-map("n", "<leader>se", "<C-w>=", opts)
-map("n", "<leader>sx", ":close<CR>", opts)
+-- Save with root permission (not working for now)
+--vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
-map("n", "<leader>bn", ":bnext<CR>", opts)
-map("n", "<leader>bp", ":bprevious<CR>", opts)
-map("n", "<leader>bd", ":bd<CR>", opts)
+-- Disable continuations
+keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
+keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- Go to definition
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- References
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- Go to implementation
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts) -- Hover documentation
-map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- Rename symbol
-map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- Code actions
-map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts) -- Format code
+-- Jumplist
+keymap.set("n", "<C-m>", "<C-i>", opts)
+
+-- New tab
+keymap.set("n", "te", ":tabedit")
+keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- Split window
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
+-- Move window
+keymap.set("n", "sh", "<C-w>h")
+keymap.set("n", "sk", "<C-w>k")
+keymap.set("n", "sj", "<C-w>j")
+keymap.set("n", "sl", "<C-w>l")
+
+-- Resize window
+keymap.set("n", "<C-w><left>", "<C-w><")
+keymap.set("n", "<C-w><right>", "<C-w>>")
+keymap.set("n", "<C-w><up>", "<C-w>+")
+keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Diagnostics
-map("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts) -- Previous diagnostic
-map("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts) -- Next diagnostic
-map("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- Open diagnostic float
-map("n", "<leader>ds", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts) -- Set location list
+keymap.set("n", "<C-j>", function()
+	vim.diagnostic.goto_next()
+end, opts)
 
--- Harpoon
-map("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts) -- Add file to Harpoon
-map("n", "<leader>hm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts) -- Open Harpoon menu
-map("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<CR>", opts) -- Navigate to next Harpoon mark
-map("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<CR>", opts) -- Navigate to previous Harpoon mark
+keymap.set("n", "<leader>r", function()
+	require("craftzdog.hsl").replaceHexWithHSL()
+end)
 
--- LuaSnip
-map("i", "<C-K>", "<cmd>lua require('luasnip').expand_or_jump()<CR>", opts) -- Expand or jump in snippet
-map("i", "<C-J>", "<cmd>lua require('luasnip').jump(-1)<CR>", opts) -- Jump back in snippet
+keymap.set("n", "<leader>i", function()
+	require("craftzdog.lsp").toggleInlayHints()
+end)
 
--- Treesitter
-map("n", "<leader>th", ":TSHighlightCapturesUnderCursor<CR>", opts) -- Highlight Treesitter group under cursor
-map("n", "<leader>ti", ":TSPlaygroundToggle<CR>", opts) -- Toggle Treesitter Playground
-
--- Neo-tree
-map("n", "<leader>e", ":Neotree toggle<CR>", opts) -- Toggle Neo-tree
-
--- Telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- Find files
-map("n", "<leader>fg", ":Telescope live_grep<CR>", opts) -- Live grep
-map("n", "<leader>fb", ":Telescope buffers<CR>", opts) -- Find buffers
-map("n", "<leader>fh", ":Telescope help_tags<CR>", opts) -- Help tags
-
--- Extra Keybinds
-map("n", "<leader>tt", ":Telescope<CR>", opts) -- Open Telescope
-map("n", "<leader>xx", ":source %<CR>", opts) -- Source current file
-map("n", "<leader>pp", ":Lazy<CR>", opts) -- Open Lazy plugin manager
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+	require("craftzdog.lsp").toggleAutoformat()
+end, {})
