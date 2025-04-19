@@ -1,4 +1,4 @@
-local discipline = require("craftzdog.discipline")
+local discipline = require("sten.discipline")
 
 discipline.cowboy()
 
@@ -64,13 +64,13 @@ keymap.set("n", "<C-j>", function()
 end, opts)
 
 keymap.set("n", "<leader>r", function()
-	require("craftzdog.hsl").replaceHexWithHSL()
+	require("stenj.hsl").replaceHexWithHSL()
 end)
 
 keymap.set("n", "<leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
+	require("sten.lsp").toggleInlayHints()
 end)
 
 vim.api.nvim_create_user_command("ToggleAutoformat", function()
-	require("craftzdog.lsp").toggleAutoformat()
+	require("sten.lsp").toggleAutoformat()
 end, {})
