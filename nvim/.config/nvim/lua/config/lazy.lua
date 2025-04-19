@@ -16,7 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"theprimeagen/harpoon",
-	{ "rose-pine/neovim", name = "rose-pine" },
+	"craftzdog/solarized-osaka.nvim",
+	-- { "rose-pine/neovim", name = "rose-pine" },
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-neo-tree/neo-tree.nvim",
