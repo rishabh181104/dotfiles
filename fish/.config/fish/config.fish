@@ -1,5 +1,5 @@
 if status is-interactive
-    fastfetch
+	fastfetch
 end
 
 starship init fish | source
@@ -32,15 +32,11 @@ alias grep='grep --color=auto'
 alias brght='brightnessctl set'
 
 alias convert='ffmpeg -i $argv[1] -filter_complex "[0:v] fps=10,scale=320:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" $argv[2]'
-alias upgrade='sudo zypper ref && sudo zypper dup -y'
-alias update='sudo zypper ref'
-alias recom='sudo zypper install-new-recommends'
-alias remove='sudo zypper remove'
-alias search='zypper se'
-alias install='sudo zypper in'
-alias remove-unwanted='sudo zypper rm $(zypper packages --unneeded)'
-alias remove-cache='sudo zypper clean --all'
-alias zlock='sudo zypper addlock'
+alias upgrade='sudo pacman -Syu'
+alias update='sudo pamcan -Syy'
+alias remove='sudo pacman -Rns'
+alias search='yay -Ss'
+alias install='sudo pacman -S'
 
 alias c='clear'
 alias n='nvim'
@@ -132,28 +128,28 @@ alias kssh="kitty +kitten ssh"
 
 # Functions
 function fish_greeting
-    echo "THIS IS FISH, BRUV!:)"
+	echo "THIS IS FISH, BRUV!:)"
 end
 
 function mkcd
-    mkdir -p $argv[1]; and cd $argv[1]
+	mkdir -p $argv[1]; and cd $argv[1]
 end
 
 function reload
-    exec fish
+	exec fish
 end
 
 function fish_prompt
-    starship prompt
+	starship prompt
 end
 
 function brave-nvidia
-    env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
+	env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
 end
 
 # Source other configs if necessary
 if test -f ~/.config/fish/local.fish
-    source ~/.config/fish/local.fish
+	source ~/.config/fish/local.fish
 end
 
 export WINEESYNC=1
