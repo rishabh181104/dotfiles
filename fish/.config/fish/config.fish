@@ -1,5 +1,5 @@
 if status is-interactive
-	fastfetch
+    fastfetch
 end
 
 starship init fish | source
@@ -15,8 +15,6 @@ set -gx FILE ~/.config/fish/config.fish
 set -gx STARSHIP_CONFIG ~/.config/starship.toml
 set -gx VISUAL nvim
 set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
-set -gx LANG en_US.UTF-8
-set -gx LC_ALL en_US.UTF-8
 set -gx PATH $HOME/.local/bin $PATH
 set -gx PATH /usr/local/bin $PATH
 set -gx PATH /usr/bin $PATH
@@ -134,38 +132,37 @@ alias kssh="kitty +kitten ssh"
 
 # Functions
 function fish_greeting
-	echo "THIS IS FISH, BRUV!:)"
+    echo "THIS IS FISH, BRUV!:)"
 end
 
 function mkcd
-	mkdir -p $argv[1]; and cd $argv[1]
+    mkdir -p $argv[1]; and cd $argv[1]
 end
 
 function reload
-	exec fish
+    exec fish
 end
 
 function fish_prompt
-	starship prompt
+    starship prompt
 end
 
 function brave-nvidia
-	env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
+    env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
 end
 
 # Source other configs if necessary
 if test -f ~/.config/fish/local.fish
-	source ~/.config/fish/local.fish
+    source ~/.config/fish/local.fish
 end
 
 export WINEESYNC=1
 export WINEFSYNC=1
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
 # END opam configuration
