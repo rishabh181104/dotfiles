@@ -1,0 +1,8 @@
+require("config.lazy")
+require("config.keymaps")
+require("config.set")
+require("plugins.mason")
+require("plugins.colors")
+require("plugins.lsp")
+require("plugins.cmp")
+require("plugins.autoindent")
