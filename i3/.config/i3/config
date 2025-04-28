@@ -19,7 +19,7 @@ exec --no-startup-id "feh --randomize --bg-fill ~/Wallpapers/Pictures/*"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
-set $terminal wezterm
+set $terminal alacritty
 set $browser ~/./Min-1.35.0-beta.AppImage --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $browser1 google-chrome-stable --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $filemanager thunar
