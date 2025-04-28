@@ -14,17 +14,25 @@ sudo touch /etc/systemd/system/autologin@tty1.service
 sudo tee /etc/systemd/system/autologin@tty1.service > /dev/null <<EOF
 [Unit]
 Description=Autologin on tty1
-After=systemd-user-sessions.service
+After=systemd-user-sessions.service getty.target
+Before=getty@tty1.service
 
 [Service]
-ExecStart=-/sbin/agetty --autologin USER_NAME --noclear %I 38400 linux
-Type=simple
-TTYPath=/dev/tty1
+ExecStart=-/sbin/agetty --autologin ste --noclear --keep-baud tty1 38400 linux
 Restart=always
 RestartSec=0
+Type=idle
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
+
 EOF
 
 # Reload systemd and restart getty service
