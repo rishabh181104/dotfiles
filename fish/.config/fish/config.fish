@@ -169,3 +169,15 @@ export WINEFSYNC=1
 # This section can be safely removed at any time if needed.
 test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
+
+
+# THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH XORG
+if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
+	exec startx
+end
+
+
+# THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
+# if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
+# 	exec dbus-run-session sway
+# end
