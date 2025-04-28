@@ -40,6 +40,8 @@ PACKAGES=(
 	xdg-desktop-portal-wlr
 	xdg-desktop-portal-hyprland
 	xdg-desktop-portal
+	xorg-x11
+	dbus-1-daemon
 )
 
 # Function to install packages
